@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.lang.Math;
+
+public class HitungGajiLembur {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input gaji bulanan dan jam lembur
+        System.out.print("Masukkan gaji bulanan: ");
+        double gajiBulanan = scanner.nextDouble();
+
+        System.out.print("Masukkan jam lembur: ");
+        int jamLembur = scanner.nextInt();
+
+        // Menghitung upah lembur per jam, dibulatkan ke atas
+        int upahLemburPerJam = (int) Math.ceil(gajiBulanan / 173);
+
+        double upahLembur;
+        if (jamLembur > 4) {
+            // Hitung upah lembur untuk 4 jam pertama dan kelebihan jam lembur
+            upahLembur = 4 * upahLemburPerJam + (jamLembur - 4) * 2 * upahLemburPerJam;
+        } else {
+            // Hitung upah lembur jika lembur 4 jam atau kurang
+            upahLembur = jamLembur * upahLemburPerJam;
+        }
+
+        // Menghitung total gaji
+        double totalGaji = gajiBulanan + upahLembur;
+
+        // Menampilkan hasil
+        System.out.println("Upah lembur per jam: " + upahLemburPerJam);
+        System.out.println("Total gaji dengan lembur: " + totalGaji);
+    }
+}
